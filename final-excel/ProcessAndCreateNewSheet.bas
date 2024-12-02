@@ -1,4 +1,3 @@
-' It promts the for the source sheet and the target sheet
 Sub ProcessAndCreateNewSheet()
     Dim sourceWs As Worksheet, targetWs As Worksheet
     Dim lastRow As Long, targetRow As Long
@@ -46,11 +45,15 @@ Sub ProcessAndCreateNewSheet()
     For i = 2 To lastRow ' Start from row 2 to skip headers
         cellValue = Trim(sourceWs.Cells(i, 6).Value) ' Column F - Trim spaces
         
+        ' Handle slashes `/` - keep only the first part
+        If InStr(cellValue, "/") > 0 Then
+            cellValue = Split(cellValue, "/")(0)
+        End If
+        
         ' Handle periods `.` in the text - split on periods and keep only the first two words
         If InStr(cellValue, ".") > 0 Then
             splitParts = Split(cellValue, ".")
             If UBound(splitParts) >= 1 Then
-                ' Keep only the first two parts (split by period)
                 processedText = splitParts(0) & " " & splitParts(1)
             Else
                 processedText = splitParts(0)
@@ -64,7 +67,7 @@ Sub ProcessAndCreateNewSheet()
                 processedText = splitParts(0)
             End If
         Else
-            ' If no period or underscore, just trim the spaces
+            ' If no period, underscore, or slash, just trim spaces
             processedText = cellValue
         End If
         
