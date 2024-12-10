@@ -1,4 +1,4 @@
-Sub RemoveNumbersAndQuestionMarksInSameSheet()
+Sub RemoveNRandSymbols()
     Dim ws As Worksheet
     Dim lastRow As Long
     Dim i As Long
@@ -7,7 +7,7 @@ Sub RemoveNumbersAndQuestionMarksInSameSheet()
     Dim sheetName As String
     
     ' Prompt the user to enter the sheet name
-    sheetName = InputBox("Enter the sheet name (e.g., edited):", "Sheet Name", "edited")
+    sheetName = InputBox("Enter the sheet name (e.g., edited):", "Sheet Name", "perpunuar.")
     
     ' Set the worksheet
     On Error Resume Next
@@ -38,6 +38,15 @@ Sub RemoveNumbersAndQuestionMarksInSameSheet()
         processedText = Application.WorksheetFunction.Substitute(processedText, "8", "")
         processedText = Application.WorksheetFunction.Substitute(processedText, "9", "")
         processedText = Application.WorksheetFunction.Substitute(processedText, "?", "")
+        processedText = Application.WorksheetFunction.Substitute(processedText, ".", "")
+        processedText = Application.WorksheetFunction.Substitute(processedText, "_", "")
+        processedText = Application.WorksheetFunction.Substitute(processedText, "-", "")
+        processedText = Application.WorksheetFunction.Substitute(processedText, "(", "")
+        processedText = Application.WorksheetFunction.Substitute(processedText, ")", "")
+        processedText = Application.WorksheetFunction.Substitute(processedText, ",", "")
+        processedText = Application.WorksheetFunction.Substitute(processedText, "!", "")
+        processedText = Application.WorksheetFunction.Substitute(processedText, "@", "")
+        processedText = Application.WorksheetFunction.Substitute(processedText, "'", "")
         
         ' Update column H with processed text
         ws.Cells(i, 8).Value = processedText

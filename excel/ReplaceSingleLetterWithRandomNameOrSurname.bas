@@ -1,4 +1,4 @@
-Sub ReplaceSingleLetterWithRandomNameOrSurname()
+Sub ReplaceSingleLetterOrTwoLettersWithRandomNameOrSurname()
     Dim sourceWs As Worksheet, targetWs As Worksheet
     Dim lastRow As Long, targetRow As Long
     Dim i As Long
@@ -57,8 +57,8 @@ Sub ReplaceSingleLetterWithRandomNameOrSurname()
         processedParts = ""
         Dim part As Variant
         For Each part In splitParts
-            If Len(part) = 1 Then
-                ' Replace single letters with a random name or surname
+            If Len(part) = 1 Or Len(part) = 2 Then
+                ' Replace single or two-letter parts with a random name or surname
                 If processedParts = "" Then
                     ' If it's the first part, replace with a name
                     randomName = names(Int((UBound(names) + 1) * Rnd))
@@ -69,7 +69,7 @@ Sub ReplaceSingleLetterWithRandomNameOrSurname()
                     processedParts = processedParts & " " & randomSurname
                 End If
             Else
-                ' Keep the part as is if it's not a single letter
+                ' Keep the part as is if it's not a single or two-letter part
                 processedParts = processedParts & " " & part
             End If
         Next part
