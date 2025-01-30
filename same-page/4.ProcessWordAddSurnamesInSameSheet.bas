@@ -25,7 +25,7 @@ Sub ProcessWordAddSurnamesInSameSheet()
     lastRow = sourceWs.Cells(sourceWs.Rows.Count, 8).End(xlUp).Row ' Column H is the 8th column
     
     ' Define the list of random surnames
-    surnames = Array("Hoxha", "Paja", "Dajti", "Balliu", "Shala", "Hoxhaj", "Leka", "Kaci", "Muca","Hysa","Tafani","Qosja","Ismaili","Bali","Marku","Tusha","Bajrami","Domi","Doshi","Berberi")
+    surnames = Array("Hoxha", "Paja", "Dajti", "Balliu", "Shala", "Hoxhaj", "Leka", "Kaci", "Muca","Hysa","Tafani","Qosja","Ismaili","Bali","Marku","Tusha","Bajrami","Domi","Doshi","Berberi","Xhafa")
     
     ' Loop through each row in column H of the source sheet
     For i = 2 To lastRow ' Start from row 2 to skip headers
