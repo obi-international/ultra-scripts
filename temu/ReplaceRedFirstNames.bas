@@ -5,8 +5,9 @@ Sub ReplaceRedFirstNames()
     Dim splitParts As Variant
     Dim randomName As String
     Dim lastName As String
-    Dim randomNames As Variant
     Dim colorCode As Long
+    Dim names As Variant
+    Dim randomIndex As Integer
     
     ' Set the active worksheet
     Set ws = ThisWorkbook.ActiveSheet
@@ -16,14 +17,17 @@ Sub ReplaceRedFirstNames()
     
     ' Define red background color used for highlighting (RGB 255, 0, 0)
     colorCode = RGB(255, 0, 0)
-    
-    ' Define a list of random Albanian first names
-    randomNames = Array("Ardit", "Blerim", "Dritan", "Elton", "Florian", "Gerti", "Ilir", "Jetmir", "Isa", "Edi", _
-                        "Marin", "Nertil", "Orgest", "Anisa", "Fjori", "Sokol", "Tedi", "Uran", "Valon", "Juliana", _
-                        "Edison", "Zamir", "Adrian", "Besnik", "Endrit", "Fatjon", "Genc", "Ismail", "Julian", _
-                        "Besnik", "Ledion", "Nertil", "Nikolin", "Orest", "Petrit", "Qamil", "Roland", "Shkëlzen", _
-                        "Marsi", "Alda", "Besa",  "Alba","Ana","Elda","Altin", "Bardhyl", "Ada", "Edison", "Fation", "Gezim","Erjon","Erjola","Anxhela")
 
+    ' Get the last row with data in column M
+    lastRow = ws.Cells(ws.Rows.Count, "M").End(xlUp).Row
+    
+    ' Pull all names from column M into the names array
+    names = ws.Range("M1:M" & lastRow).Value
+    
+    ' Generate a random index (1 to lastRow)
+    Randomize ' Ensure different results on each run
+    randomIndex = Int((lastRow - 1 + 1) * Rnd) + 1
+    
     ' Loop through column F starting from row 19
     For Each cell In ws.Range("F19:F" & lastRow)
         ' Check if the row is highlighted in red
@@ -36,10 +40,10 @@ Sub ReplaceRedFirstNames()
                 ' Keep the last word as the surname
                 lastName = splitParts(UBound(splitParts))
                 
-                ' Select a random first name (duplicates allowed)
-                randomName = randomNames(Int((UBound(randomNames) + 1) * Rnd))
+                ' Select a random first name from column M
+                randomName = names(randomIndex, 1)
                 
-                ' Replace the name in the cell
+                ' Replace the name in the cell with the new first name and last name
                 cell.Value = randomName & " " & lastName
             End If
         End If
