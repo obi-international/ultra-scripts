@@ -15,11 +15,11 @@ Sub NumberRedBackgroundRows()
     ' Find the last row in column F
     lastRow = ws.Cells(ws.Rows.Count, 6).End(xlUp).Row ' Column F is the 6th column
     
-    ' Start from row 19
+    ' Start from row 3
     startRow = 3
     counter = 1 ' Initialize counter
     
-    ' Loop through column F from row 19 and below
+    ' Loop through column F from row 3 and below
     For Each cell In ws.Range("F" & startRow & ":F" & lastRow)
         ' Check if the row is highlighted in red
         If cell.Interior.Color = colorCode Then
