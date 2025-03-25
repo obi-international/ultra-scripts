@@ -20,14 +20,14 @@ Sub GenerateDescriptions()
     End If
     
     ' Find the last row in column F
-    lastRow = ws.Cells(ws.Rows.Count, "F").End(xlUp).Row
+    lastRow = ws.Cells(ws.Rows.Count, "D").End(xlUp).Row
     
     ' Loop through each row and generate the description
     For i = 2 To lastRow ' Assuming headers are in row 1
-        fullName = ws.Cells(i, "F").Value
-        numPieces = ws.Cells(i, "N").Value
-        importNum = ws.Cells(i, "T").Value
-        referenceNum = ws.Cells(i, "R").Value
+        fullName = UCase(ws.Cells(i, "D").Value)
+        numPieces = ws.Cells(i, "H").Value
+        importNum = ws.Cells(i, "M").Value
+        referenceNum = ws.Cells(i, "L").Value
         
         ' Convert referenceNum to a number if possible
         If IsNumeric(referenceNum) Then
@@ -38,14 +38,14 @@ Sub GenerateDescriptions()
         
         ' Construct the description text
         description = fullName & vbNewLine & _
-                      numPieces & " pako dergese postare " & importNum & vbNewLine & _
+                      numPieces & " PAKO DERGESA POSTARE " & importNum & vbNewLine & _
                       "D-" & referenceNum
         
         ' Write the description in column U of the same sheet
-        ws.Cells(i, "U").Value = description
+        ws.Cells(i, "N").Value = description
     Next i
     
-    MsgBox "Descriptions generated successfully in column U of " & sheetName, vbInformation
+    MsgBox "Descriptions generated successfully in column N of " & sheetName, vbInformation
 End Sub
 
 

@@ -5,8 +5,8 @@ Sub FilterAndCopyValues()
     Dim filterColNum As Long
     
     ' Set default values
-    sourceSheetName = "Sheet1" ' Default source sheet name
-    filterColumn = "S" ' Default column to filter
+    sourceSheetName = "initially" ' Default source sheet name
+    filterColumn = "O" ' Default column to filter
     destSheetName = "ready" ' Default destination sheet name
     
     ' Prompt for source sheet name (user can change it)
@@ -55,7 +55,7 @@ Sub FilterAndCopyValues()
     
     ' Loop through each row and filter based on the specified column value = 1
     For i = 2 To lastRow ' Assuming data starts from row 2
-        If wsSource.Cells(i, filterColNum).Value = 1 Then
+        If wsSource.Cells(i, filterColNum).Value > 1 Then
             ' Copy the entire row
             wsSource.Rows(i).Copy
             
