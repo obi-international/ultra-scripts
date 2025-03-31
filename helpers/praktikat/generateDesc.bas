@@ -7,7 +7,7 @@ Sub GenerateDescriptions()
     Dim description As String
     
     ' Prompt for the sheet name
-    sheetName = InputBox("Enter the sheet name:","Sheet Name", "ready")
+    sheetName = InputBox("Enter the sheet name:", "Sheet Name", "ready")
     
     ' Check if the sheet exists
     On Error Resume Next
@@ -25,9 +25,9 @@ Sub GenerateDescriptions()
     ' Loop through each row and generate the description
     For i = 2 To lastRow ' Assuming headers are in row 1
         fullName = UCase(ws.Cells(i, "D").Value)
-        numPieces = ws.Cells(i, "H").Value
-        importNum = ws.Cells(i, "M").Value
-        referenceNum = ws.Cells(i, "L").Value
+        numPieces = ws.Cells(i, "F").Value
+        importNum = ws.Cells(i, "K").Value
+        referenceNum = ws.Cells(i, "J").Value
         
         ' Convert referenceNum to a number if possible
         If IsNumeric(referenceNum) Then
@@ -42,10 +42,12 @@ Sub GenerateDescriptions()
                       "D-" & referenceNum
         
         ' Write the description in column U of the same sheet
-        ws.Cells(i, "N").Value = description
+        ws.Cells(i, "L").Value = description
     Next i
     
-    MsgBox "Descriptions generated successfully in column N of " & sheetName, vbInformation
+    MsgBox "Descriptions generated successfully in column L of " & sheetName, vbInformation
 End Sub
+
+
 
 
