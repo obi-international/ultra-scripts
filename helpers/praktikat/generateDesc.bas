@@ -3,7 +3,7 @@ Sub GenerateDescriptions()
     Dim sheetName As String
     Dim lastRow As Long, i As Long
     Dim fullName As String, numPieces As String, importNum As String
-    Dim referenceNum As Variant ' Use Variant to handle both text and numbers
+    Dim detyrimi As Variant ' Use Variant to handle both text and numbers
     Dim description As String
     
     ' Prompt for the sheet name
@@ -24,28 +24,28 @@ Sub GenerateDescriptions()
     
     ' Loop through each row and generate the description
     For i = 2 To lastRow ' Assuming headers are in row 1
-        fullName = UCase(ws.Cells(i, "D").Value)
-        numPieces = ws.Cells(i, "F").Value
-        importNum = ws.Cells(i, "K").Value
-        referenceNum = ws.Cells(i, "J").Value
+        fullName = UCase(ws.Cells(i, "B").Value)
+        numPieces = ws.Cells(i, "D").Value
+        importNum = ws.Cells(i, "I").Value
+        detyrimi = ws.Cells(i, "H").Value
         
-        ' Convert referenceNum to a number if possible
-        If IsNumeric(referenceNum) Then
-            referenceNum = Application.WorksheetFunction.Round(CDbl(referenceNum), 0)
+        ' Convert detyrimi to a number if possible
+        If IsNumeric(detyrimi) Then
+            detyrimi = Application.WorksheetFunction.Round(CDbl(detyrimi), 0)
         Else
-            referenceNum = "0" ' Fallback in case of non-numeric value
+            detyrimi = "0" ' Fallback in case of non-numeric value
         End If
         
         ' Construct the description text
         description = fullName & vbNewLine & _
                       numPieces & " PAKO DERGESA POSTARE " & importNum & vbNewLine & _
-                      "D-" & referenceNum
+                      "D-" & detyrimi
         
         ' Write the description in column U of the same sheet
-        ws.Cells(i, "L").Value = description
+        ws.Cells(i, "J").Value = description
     Next i
     
-    MsgBox "Descriptions generated successfully in column L of " & sheetName, vbInformation
+    MsgBox "Descriptions generated successfully in column J of " & sheetName, vbInformation
 End Sub
 
 

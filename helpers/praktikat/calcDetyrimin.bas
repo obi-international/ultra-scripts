@@ -8,7 +8,7 @@ Sub ApplyCurrencyConversion()
     Dim valueColNum As Integer, resultColNum As Integer
     
     ' Ask user for the sheet name (default: "initially")
-    sheetName = InputBox("Enter the sheet name to process:", "Sheet Selection", "initially")
+    sheetName = InputBox("Enter the sheet name to process:", "Sheet Selection", "ready")
     
     ' Check if the sheet exists
     On Error Resume Next
@@ -27,8 +27,8 @@ Sub ApplyCurrencyConversion()
     resultColNum = valueColNum + 1  ' The result column is the next column to the right
     resultColumn = Split(Cells(1, resultColNum).Address, "$")(1)  ' Convert column number to letter
 
-    ' Ask for the exchange rate (default: 99.23)
-    exchangeRate = CDbl(InputBox("Enter the exchange rate:", "Exchange Rate", 99.23))
+    ' Ask for the exchange rate (default: 99.29) check with dogana
+    exchangeRate = CDbl(InputBox("Enter the exchange rate:", "Exchange Rate", 99.29))
     
     ' Find the last row in the value column
     lastRow = ws.Cells(ws.Rows.Count, valueColNum).End(xlUp).Row
