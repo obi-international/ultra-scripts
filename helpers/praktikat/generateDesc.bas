@@ -25,9 +25,9 @@ Sub GenerateDescriptions()
     ' Loop through each row and generate the description
     For i = 2 To lastRow ' Assuming headers are in row 1
         fullName = UCase(ws.Cells(i, "B").Value)
-        numPieces = ws.Cells(i, "D").Value
-        importNum = ws.Cells(i, "I").Value
-        detyrimi = ws.Cells(i, "H").Value
+        numPieces = ws.Cells(i, "C").Value
+        detyrimi = ws.Cells(i, "G").Value
+        importNum = ws.Cells(i, "H").Value
         
         ' Convert detyrimi to a number if possible
         If IsNumeric(detyrimi) Then
@@ -42,10 +42,10 @@ Sub GenerateDescriptions()
                       "D-" & detyrimi
         
         ' Write the description in column U of the same sheet
-        ws.Cells(i, "J").Value = description
+        ws.Cells(i, "I").Value = description
     Next i
     
-    MsgBox "Descriptions generated successfully in column J of " & sheetName, vbInformation
+    MsgBox "Descriptions generated successfully in column I of " & sheetName, vbInformation
 End Sub
 
 
