@@ -20,7 +20,7 @@ Sub ApplyCurrencyConversion()
     End If
     
     ' Ask for the value column (default: "N")
-    valueColumn = UCase(InputBox("Enter the column where values are located:", "Value Column Selection", "N"))
+    valueColumn = UCase(InputBox("Enter the column where values are located:", "Value Column Selection", "G"))
     
     ' Convert column letter to number
     valueColNum = Range(valueColumn & "1").Column
