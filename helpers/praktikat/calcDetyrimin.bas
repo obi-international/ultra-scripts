@@ -1,4 +1,6 @@
 ' =ROUND((N6 * 99.23) + ((N6 * 99.23) * 0.02) + (((N6 * 99.23) + ((N6 * 99.23) * 0.02)) * 0.2), 2)
+' inverse: Euro * 99.23 * 1.02 * 1.2 = Euro * 121.71336
+
 
 Sub ApplyCurrencyConversion()
     Dim ws As Worksheet
