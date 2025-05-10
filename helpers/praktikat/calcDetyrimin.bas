@@ -30,7 +30,7 @@ Sub ApplyCurrencyConversion()
     resultColumn = Split(Cells(1, resultColNum).Address, "$")(1)  ' Convert column number to letter
 
     ' Ask for the exchange rate (default: 99.29) check with dogana
-    exchangeRate = CDbl(InputBox("Enter the exchange rate:", "Exchange Rate", 99.29))
+    exchangeRate = CDbl(InputBox("Enter the exchange rate:", "Exchange Rate", 98.71))
     
     ' Find the last row in the value column
     lastRow = ws.Cells(ws.Rows.Count, valueColNum).End(xlUp).Row
