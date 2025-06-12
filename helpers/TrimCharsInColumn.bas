@@ -1,9 +1,11 @@
-Sub TrimCharsInColumnC()
+Sub TrimCharsInColumn()
     Dim wsName As String
     Dim ws As Worksheet
     Dim charsToRemove As Variant
     Dim r As Long
     Dim cellVal As String
+    Dim colInput As String
+    Dim colNum As Long
 
     ' Prompt for sheet name (default "date")
     wsName = InputBox("Enter the sheet name:", "Sheet Selection", "date")
@@ -16,6 +18,20 @@ Sub TrimCharsInColumnC()
         Exit Sub
     End If
 
+    ' Prompt for column letter (default "C")
+    colInput = InputBox("Enter column letter to process:", "Column Selection", "C")
+    If colInput = "" Then Exit Sub
+    colInput = UCase(Trim(colInput))
+
+    On Error Resume Next
+    colNum = Columns(colInput).Column
+    On Error GoTo 0
+
+    If colNum = 0 Then
+        MsgBox "Invalid column letter entered.", vbExclamation
+        Exit Sub
+    End If
+
     ' Get the worksheet
     On Error Resume Next
     Set ws = ThisWorkbook.Sheets(wsName)
@@ -25,18 +41,17 @@ Sub TrimCharsInColumnC()
         Exit Sub
     End If
 
-    ' Start from row 20 in column C
+    ' Start from row 20
     r = 20
-    Do While ws.Cells(r, "C").Value <> ""
-        cellVal = ws.Cells(r, "C").Value
+    Do While ws.Cells(r, colNum).Value <> ""
+        cellVal = ws.Cells(r, colNum).Value
         If Len(cellVal) > charsToRemove Then
-            ws.Cells(r, "C").Value = Mid(cellVal, charsToRemove + 1)
+            ws.Cells(r, colNum).Value = Mid(cellVal, charsToRemove + 1)
         Else
-            ws.Cells(r, "C").Value = "" ' Clear if text is shorter than chars to remove
+            ws.Cells(r, colNum).Value = "" ' Clear if text is shorter than chars to remove
         End If
         r = r + 1
     Loop
 
-    MsgBox "Trimming complete in column C starting from row 20.", vbInformation
+    MsgBox "Trimming complete in column " & colInput & " starting from row 20.", vbInformation
 End Sub
-

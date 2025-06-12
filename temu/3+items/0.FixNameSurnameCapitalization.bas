@@ -1,4 +1,4 @@
-Sub FixNameSurnameCapitalization()
+Sub FixNameSurnameCapitalizationFColumn()
     Dim ws As Worksheet
     Dim lastRow As Long
     Dim i As Long
