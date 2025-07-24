@@ -64,6 +64,7 @@ Sub GroupByHSCodeWithHeadersAndTotals_Conditional()
         totalBruto = 0
         totalNeto = 0
         totalSasi = 0
+        totalValue = 0
 
         ' Copy rows and accumulate totals
         For Each r In codeDict(key)
@@ -71,6 +72,7 @@ Sub GroupByHSCodeWithHeadersAndTotals_Conditional()
             totalCO = totalCO + Val(r.Cells(1, "D").Value)
             totalBruto = totalBruto + Val(r.Cells(1, "E").Value)
             totalNeto = totalNeto + Val(r.Cells(1, "F").Value)
+            totalValue = totalValue + Val(r.Cells(1, "G").Value)
             totalSasi = totalSasi + Val(r.Cells(1, "J").Value)
             destRow = destRow + 1
         Next r
@@ -82,6 +84,7 @@ Sub GroupByHSCodeWithHeadersAndTotals_Conditional()
                 .Cells(destRow, "D").Value = totalCO
                 .Cells(destRow, "E").Value = totalBruto
                 .Cells(destRow, "F").Value = totalNeto
+                .Cells(destRow, "G").Value = totalValue
                 .Cells(destRow, "J").Value = totalSasi
                 .Range(.Cells(destRow, "C"), .Cells(destRow, "J")).Font.Bold = True
             End With

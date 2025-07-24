@@ -1,4 +1,4 @@
-Sub FilterByValueAndColor()
+Sub FilterByValue22PlusAndColor()
     Dim ws As Worksheet, newWs As Worksheet
     Dim lastRow As Long, i As Long, destRow As Long
     Dim sourceSheetName As String, targetSheetName As String
@@ -52,7 +52,7 @@ Sub FilterByValueAndColor()
         cellColor = ws.Cells(i, filterColNum).Interior.Color
 
         If IsNumeric(cellValue) Then
-            If cellValue >= 22 And cellColor <> RGB(255, 0, 0) Then
+            If cellValue > 22 And cellColor <> RGB(255, 0, 0) Then
                 ws.Rows(i).Copy Destination:=newWs.Rows(destRow)
                 destRow = destRow + 1
             End If

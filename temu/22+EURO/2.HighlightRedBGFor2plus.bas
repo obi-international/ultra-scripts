@@ -1,4 +1,4 @@
-Sub HighlightDuplicates()
+Sub HighlightRedBGFor2plus()
     Dim ws As Worksheet
     Dim lastRow As Long
     Dim nameCounts As Object

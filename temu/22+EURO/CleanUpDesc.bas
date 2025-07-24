@@ -5,7 +5,7 @@ Sub CleanUpDescriptions()
     Dim lastRow As Long, i As Long
     Dim fullText As String, parts As Variant
 
-    sheetName = InputBox("Enter the sheet name:", "Sheet Name", "1 item")
+    sheetName = InputBox("Enter the sheet name:", "Sheet Name", "teke")
     If sheetName = "" Then Exit Sub
     
     colLetter = InputBox("Enter the column letter to clean (e.g., E):", "Column", "E")

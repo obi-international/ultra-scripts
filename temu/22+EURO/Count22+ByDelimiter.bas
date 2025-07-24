@@ -9,7 +9,7 @@ Sub CountItemsByPipeDelimiter()
     Dim parts As Variant
 
     ' Prompt for inputs
-    sheetName = InputBox("Enter the sheet name to process:", "Sheet Name", "1 item")
+    sheetName = InputBox("Enter the sheet name to process:", "Sheet Name", "teke")
     If sheetName = "" Then Exit Sub
 
     descColLetter = InputBox("Enter the column letter for description (default = F):", "Description Column", "F")
